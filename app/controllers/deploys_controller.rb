@@ -12,6 +12,19 @@ class DeploysController < ApplicationController
     render :index
   end
 
+  def create_comment
+    comment_params = params.require(:comment).permit(:body, :deploy_id, :user_id)
+    comment = Comment.new(comment_params)
+
+    if comment.save
+      flash[:success] = 'Comment saved.'
+    else
+      flash[:error] = 'Comment not saved.'
+    end
+
+    redirect_to :all_deploys
+  end
+
   def ping
     render text: 'pong'
   end

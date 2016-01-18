@@ -36,9 +36,13 @@
 
       <h5><%= github_diff_link(deploy, @deploys[index+1]) %></h5>
 
-      <%= form_for Comment.new(deploy_uid: deploy.uid, user_uid: current_user.uid), url: {action: "add_comment"} do |f| %>
-        <%= f.text_field :body %>
-        <%= f.submit "Add Comment" %>
+      <% if current_user %>
+        <%= form_for Comment.new(deploy: deploy, user: current_user), url: create_comment_path(deploy) do |f| %>
+          <%= f.text_field :body %>
+          <%= f.hidden_field :deploy_id %>
+          <%= f.hidden_field :user_id %>
+          <%= f.submit "Add Comment" %>
+        <% end %>
       <% end %>
 
       <hr>

@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20160115101910) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "uid"
-    t.string   "deploy_uid"
-    t.string   "user_uid"
+    t.integer  "deploy_id"
+    t.integer  "user_id"
     t.text     "body",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

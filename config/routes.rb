@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   get '/ping'   => 'deploys#ping'
   get '/denied' => 'deploys#denied', as: :access_denied
 
-  post '/deploy/:id/comment' => 'deploys#create_comment', as: :create_comment
+  post '/deploy/:id/create_comment' => 'deploys#create_comment', as: :create_comment
 end

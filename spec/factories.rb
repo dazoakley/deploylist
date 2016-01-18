@@ -1,4 +1,11 @@
 FactoryGirl.define do
+  factory :user do
+    name 'Bob Fleming'
+    email 'bob.fleming@cough.com'
+    provider 'google_oauth2'
+    sequence(:uid)
+  end
+
   factory :deploy do
     sequence(:uid)
     sha '10f0393d'
